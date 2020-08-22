@@ -11,7 +11,50 @@ async function connect(){
       //console.log(`collection created ${(await collection).collectionName}`)
       //const collection = database.createCollection("Customers");
       //console.log(`Connected to Database ${database.databaseName}`)
-      //console.log(`collection created ${(await collection).collectionName}`)
+	  //console.log(`collection created ${(await collection).collectionName}`)
+	  
+	 /*const collection = database.createCollection("Drinks");
+      console.log(`Connected to Database ${database.databaseName}`)
+	  console.log(`collection created ${(await collection).collectionName}`)*/
+	  
+	 const Drinks = database.collection("Drinks")
+    const insertCursor = await Drinks.insertMany([
+		{
+			"id": "01",
+			"Name": "Iced Capp",
+			"Beverage_type":"Cold",
+			"Price": "$ 7.77"
+		},
+		{
+			"id": "02",
+			"Name": "Smoothies",
+			"Beverage_type":"Cold",
+			"Price": "$ 5.77"
+		},
+		{
+			"id": "02",
+			"Name": "Latte",
+			"Beverage_type":"Hot",
+			"Price": "$ 3.99"
+		},
+		{
+			"id": "02",
+			"Name": "Iced Coffee",
+			"Beverage_type":"Cold",
+			"Price": "$ 2.10"
+		},
+		{
+			"id": "02",
+			"Name": "Caramel Macheito",
+			"Beverage_type":"Hot",
+			"Price": "$ 5.77"
+		}
+
+
+
+	])
+	console.log(insertCursor.insertedCount) 
+
 
 /*const Customers = database.collection("Customers")
     const insertCursor = await Customers.insertMany([       
@@ -62,7 +105,7 @@ async function connect(){
 ])
 console.log(insertCursor.insertedCount)*/
 
-    const MenuBills = database.collection("MenuBills")
+    /*const MenuBills = database.collection("MenuBills")
     const insertCursor = await MenuBills.insertMany([ 
         
 
@@ -125,7 +168,7 @@ console.log(insertCursor.insertedCount)*/
 
 
     ])
-    console.log(insertCursor.insertedCount)
+    console.log(insertCursor.insertedCount)*/
 
     /*const Customers= database.collection("Customers");
     //const searchCursor = await Customers.find();
