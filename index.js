@@ -1,4 +1,5 @@
 
+
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Sippi:sandeep@cluster1.idvrb.mongodb.net/Restuarant?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true }); 
@@ -7,24 +8,64 @@ async function connect(){
   try {
     await client.connect();
     const database = client.db("Resturant");
+    //Created collection 1
   // const collection = database.createCollection("Food_items");
     //console.log(`Connected to Database ${database.databaseName}`)
     //console.log(`collection created ${(await collection).collectionName}`)
-    //const collection = database.createCollection("Orders");
+    //Created collection 2
+    //const collection = database.createCollection("StaffMembers")
     //console.log(`Connected to Database ${database.databaseName}`)
     //console.log(`collection created ${(await collection).collectionName}`)
-    const Food_items = database.collection("Food_items")
-    const insertCursor = await Food_items.insertMany([
-      {_id:11,name:"bigmac",price:5.99,type:"beef",category:"bigbun"},
-        {_id:23,name:"cheeseburger",price:2.80,type:"regmeat",category:"sandwich"},
-        {_id:34,name:"redslushy",price:2,type:"cold",category:"summerdrink"},
-        {_id:45,name:"strawsmoothie",price:4,type:"cold",category:"drink"},
-        {_id:56,name:"fries",price:3.45,type:"fried",category:"fried"},
-      {_id:67,name:"donut",price:0.99,type:"sweet",category:"speciality"}
+    //Created collection 3
+    /*const collection = database.createCollection("Sandwiches");
+    console.log(`Connected to Database ${database.databaseName}`)
+    console.log(`collection created ${(await collection).collectionName}`)*/
+
+    // Inserted data 
+    const Sandwiches = database.collection("Sandwiches")
+    const insertCursor = await Sandwiches.insertMany([
+      {
+			"id": "01",
+			"Name": "Sausage biscuit",
+			"type":"breakfast",
+			"Price": "$ 5.77"
+    },
+    {
+			"id": "02",
+			"Name": "Bacon biscuit",
+			"type":"breakfast",
+			"Price": "$ 5.77"
+    },
+    {
+			"id": "03",
+			"Name": "Chicken wrap",
+			"type":"lunch",
+			"Price": "$ 6.78"
+    },
+    {
+			"id": "04",
+			"Name": "Turkey club",
+			"type":"lunch",
+			"Price": "$ 7.78"
+		}
+    
 
 
     ])
     console.log(insertCursor.insertedCount)
+
+    /*const Food_items = database.collection("Food_items")
+    const insertCursor = await Food_items.insertMany([
+      {_id:11,name:"bigmac",price:5.99,type:"beef",category:"bigbun"},
+      {_id:23,name:"cheeseburger",price:2.80,type:"regmeat",category:"sandwich"},
+      {_id:34,name:"redslushy",price:2,type:"cold",category:"summerdrink"},
+      {_id:45,name:"strawsmoothie",price:4,type:"cold",category:"drink"},
+      {_id:56,name:"fries",price:3.45,type:"fried",category:"fried"},
+      {_id:67,name:"donut",price:0.99,type:"sweet",category:"speciality"}
+
+
+    ])
+    console.log(insertCursor.insertedCount)*/
     /* To insert Data
     const StaffMembers = database.collection("StaffMembers")
     const insertCursor = await StaffMembers.insertMany([
@@ -66,6 +107,12 @@ finally {
   await client.close();
 }
 }
+
+/*client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  
+  client.close();
+});*/
 
 /*client.connect(err => {
   const collection = client.db("test").collection("devices");
